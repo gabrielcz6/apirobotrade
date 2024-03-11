@@ -37,7 +37,19 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # 3rd-party apps
+    "rest_framework", # new
+    # Local
+    "accounts.apps.AccountsConfig", # new
+    "posts.apps.PostsConfig", # new
 ]
+
+REST_FRAMEWORK = { # new
+"DEFAULT_PERMISSION_CLASSES": [
+"rest_framework.permissions.IsAuthenticated",
+],
+}
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -80,6 +92,8 @@ DATABASES = {
     }
 }
 
+# django_project/settings.py
+AUTH_USER_MODEL = "accounts.CustomUser" # new
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
