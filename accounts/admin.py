@@ -14,9 +14,15 @@ class CustomUserAdmin(UserAdmin):
         "email",
         "username",
         "name",
+        "license_expiry_date",
         "is_staff",
-        ]
-    fieldsets = UserAdmin.fieldsets + ((None, {"fields": ("name",)}),)
-    add_fieldsets = UserAdmin.add_fieldsets + ((None, {"fields": ("name",)}),)
+    ]
+    fieldsets = UserAdmin.fieldsets + (
+        (None, {"fields": ("name", "license_expiry_date", "hdd")}),
+    )
+    add_fieldsets = UserAdmin.add_fieldsets + (
+        (None, {"fields": ("name", "license_expiry_date", "hdd")}),
+    )
+    readonly_fields = ('hdd',)  # Hace que el campo 'hdd' sea de solo lectura
 
 admin.site.register(CustomUser, CustomUserAdmin)    
